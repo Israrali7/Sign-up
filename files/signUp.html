@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <link rel="stylesheet" href="./files/styles.css">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="form-box">
-            <h1>Sign In</h1>
+            <h1>Sign Up</h1>
             <form>
+                <div class="input-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="text" placeholder="Enter your full name" required>
+                </div>
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" placeholder="Enter your email" required>
@@ -19,8 +23,12 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" placeholder="Enter your password" required>
                 </div>
-                <button type="submit" id="signIn" class="btn">Sign In</button>
-                <p class="text">Don't have an account? <a href="./files/signUp.html" id="signUp">Sign Up</a></p>
+                <div class="input-group">
+                    <label for="password"> Verify </label>
+                    <input type="password" id="Password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" id="Sign Up" class="btn">Sign Up</button>
+                <p class="text">Already have an account? <a href="/index.html" id="signIn">Sign In</a></p>
             </form>
         </div>
     </div>
