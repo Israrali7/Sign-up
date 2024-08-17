@@ -2,10 +2,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f8ff; /* Light blue background */
+    background-color: #f0f8ff;
+    /* Light blue background */
 }
+
 header {
-    background-color: #87cefa; /* Light sky blue */
+    background-color: #87cefa;
+    /* Light sky blue */
     padding: 10px 20px;
     color: white;
     display: flex;
@@ -13,40 +16,50 @@ header {
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 header h1 {
     margin: 0;
     font-size: 1.5rem;
 }
+
 nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
+
 nav ul li {
     margin-left: 20px;
 }
+
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
+
 nav ul li a:hover {
     text-decoration: underline;
 }
+
 .container {
     display: flex;
 }
+
 .sidebar {
     width: 250px;
-    background-color: #e6f7ff; /* Lighter blue */
+    background-color: #e6f7ff;
+    /* Lighter blue */
     padding: 15px;
     box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
 }
+
 .main-content {
     flex: 1;
     padding: 20px;
 }
+
 .card {
     background-color: white;
     border: 1px solid #ddd;
@@ -55,6 +68,48 @@ nav ul li a:hover {
     padding: 20px;
     margin-bottom: 20px;
 }
+
 .card h2 {
     margin-top: 0;
+}
+
+#userName {
+    width: 200px;
+    height: 30px;
+    padding: 3px;
+    font-size: 16px;
+    border: 0.5px solid black;
+}
+
+#descrip {
+    width: 200px;
+    padding: 3px;
+    height: 80px;
+    font-size: 14px;
+    border: 0.5px solid black;
+}
+
+#descrip :active {
+    text-decoration: 0;
+    outline: 0;
+}
+
+.btn {
+    width: 80%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+.type{
+    height: 165px;
+    width: 200;
 }
