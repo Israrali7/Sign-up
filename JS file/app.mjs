@@ -4,20 +4,20 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
+  // signOut,
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  addDoc
+// import {
+//   getFirestore,
+//   collection,
+//   getDocs,
+//   addDoc
 
-} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js"
+// } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js"
 
 const auth = getAuth();
-const db = getFirestore(app);
+// const db = getFirestore(app);
 
 // Function to create a new user account
 function signUpUser() {
@@ -72,17 +72,17 @@ function signOutUser() {
   });
 }
 
-// Function to addDocs 
-async function addDoc(){
-  try {
-    const docRef = await addDoc(collection(db, "users"), {
+// // Function to addDocs 
+// async function addDoc(){
+//   try {
+//     const docRef = await addDoc(collection(db, "users"), {
 
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
+//     });
+//     console.log("Document written with ID: ", docRef.id);
+//   } catch (e) {
+//     console.error("Error adding document: ", e);
+//   }
+// }
 
 
 
@@ -95,7 +95,7 @@ let signOut = document.getElementById('signOut');
 // Event listeners for the buttons
 signIn.addEventListener('click', signInUser);
 signUp.addEventListener('click', signUpUser);
-signOut.addEventListener('click', signOutUser);
+// signOut.addEventListener('click', signOutUser);
 
 
 // Function to Auth Change

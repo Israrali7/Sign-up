@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Blogging Website</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
     <header>
-        <h1>Home Page</h1>
-        <nav>
+        <h1>Blogging Website</h1>
+        <nav aria-label="Main navigation">
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Profile</a></li>
@@ -26,38 +25,27 @@
         <aside class="sidebar">
             <h2>Profile</h2>
             <ul>
-                <li><a href="#" id="post">Post Your Blog</a></li>
-                <!-- <li><a href="#">Reports</a></li>
-                <li><a href="#">Analytics</a></li>
-                <li><a href="#">Messages</a></li> -->
+                <a href="#" id="post" class="blog-post">Post Your Blog</a>
             </ul>
-            <div class="postBox">
+            <section class="postBox" id="postBox" style="display: none;">
                 <input type="text" id="userName" placeholder="Enter Your User Name"><br><br>
-                <textarea  id="descrip" placeholder="Enter Your Description About the Post"></textarea><br><br>
-                <input type="file"  id="getImg"><br><br>
+                <textarea id="descrip" placeholder="Enter Your Description About the Post"></textarea><br><br>
+                <input type="file" id="getImg"><br><br>
                 <button id="addBtn" class="btn">Add File</button><br><br>
-
-            </div>
+            </section>
         </aside>
 
         <div class="main-content" id="main-content">
             <div class="card">
-                <h2>Welcome To Our WebPAge</h2>
-                <p>All Your Need Is Here ...</p>
+                <h2>Welcome To Our Blogging Website</h2>
+                <p>Share your thoughts with the world...</p>
             </div>
-            <div class="card" id="card">
-                <div>
-                    <img class="type" src="https://tse1.mm.bing.net/th?id=OIP.IYsUZd0KhRgvnDe4ilYYlAHaJ4&pid=Api&P=0&h=220"
-                        alt="Image is Loading">
-                    <h2>NAme of the user</h2>
-                </div>
-                <p>Description Of the blog</p>
-            </div>
+            <div class="card" id="card"></div>
         </div>
     </div>
-    <script type="module" src="/JS file/blog.mjs"></script>
-    <script type="module" src="/JS file/app.mjs"></script>
+
     <script type="module" src="/JS file/firebase.mjs"></script>
+    <script type="module" src="/JS file/blog.mjs"></script>
 </body>
 
 </html>

@@ -1,25 +1,81 @@
-// let arr = ['tse3.mm.bing.net/th?id=OIP.dR3G3gPqecoR-F2B9qqteAHaNK&pid=Api&P=0&h=220 ', 
-//     'images.unsplash.com/photo-1507580433829-a0989f4d4469?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9' ,
-//     'orig00.deviantart.net/e197/f/2016/082/6/2/random_character_by_tabanei-d9w51au.png']
+import {
+    auth,
+    db,
+    onAuthStateChanged,
+    signOut,
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    orderBy
+} from './firebase.mjs';
 
-let addBtn = document.getElementById('addBtn')
-addBtn.addEventListener('click', () => {
-    let input = document.getElementById('userName').value
-    let description = document.getElementById('descrip').value
-    let file = document.getElementById('getImg').value
-
-    let container = document.getElementById('main-content')
-
-
-    container.innerHTML += 
-       `<div class="card">
-           <div>
-                <img class="type" src="https://${arr[0]}"alt="Image is Loading">
-                <h2>${input}</h2>
-            </div>
-            <p>${description}</p>
-        </div>`;
-    input.value = "";
-    description = "";
-    file = "";
+// Sign-out functionality
+document.getElementById('signOut').addEventListener('click', async () => {
+    try {
+        await signOut(auth);
+        window.location.href = '/index.html'; // Redirect to login page
+    } catch (error) {
+        console.error('Sign Out Error:', error);
+    }
 });
+
+// Show or hide post box based on authentication status
+onAuthStateChanged(auth, user => {
+    const postBox = document.getElementById('postBox');
+    const userNameInput = document.getElementById('userName');
+
+    if (user) {
+        postBox.style.display = 'block';
+        userNameInput.value = user.displayName || '';
+        userNameInput.disabled = true;
+    } else {
+        postBox.style.display = 'none';
+    }
+});
+
+// Handle post creation
+document.getElementById('addBtn').addEventListener('click', async () => {
+    const description = document.getElementById('descrip').value;
+    const userName = auth.currentUser.displayName || 'Anonymous';
+
+    if (description.trim()) {
+        try {
+            const docRef = await addDoc(collection(db, 'blogPosts'), {
+                userName,
+                description,
+                createdAt: new Date()
+            });
+            console.log('Document written with ID: ', docRef.id);
+            document.getElementById('descrip').value = ''; // Clear description box after posting
+        } catch (e) {
+            console.error('Error adding document: ', e);
+        }
+    } else {
+        alert('Please enter a description for your post.');
+    }
+});
+
+// Load and display blog posts
+async function loadPosts() {
+    const postsContainer = document.getElementById('card');
+    postsContainer.innerHTML = '';
+
+    const q = query(collection(db, 'blogPosts'), orderBy('createdAt', 'desc'));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+        const post = doc.data();
+        const postElement = document.createElement('div');
+        postElement.className = 'card';
+        postElement.innerHTML = `
+            <h3>${post.userName}</h3>
+            <p>${post.description}</p>
+            <p>${new Date(post.createdAt.toDate()).toLocaleString()}</p>
+        `;
+        postsContainer.appendChild(postElement);
+    });
+}
+
+// Load posts on page load
+loadPosts();
